@@ -29,12 +29,14 @@ function Node(i,j){
   this.g=0;
   this.start=false;
   this.end=false;
-  this.nb = [];
+
   this.previous = undefined;
   this.show = function(col){
     ctx.fillStyle=col
     ctx.fillRect(j*25,i*25,25,25);
   }
+
+  this.nb = [];
 
   this.addNb = function(){
     var x = this.j
@@ -71,7 +73,6 @@ var board = new Array(cols)
 for (var i = 0; i < rows; i++) {
   board[i] = new Array(cols);
 }
-console.log(board)
 
 
 for(var i = 0; i<rows; i++){

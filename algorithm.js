@@ -63,8 +63,6 @@ function astar(a){
         winner=i
       }
     }
-
-
     var current=openSet[winner]
 
 
@@ -74,9 +72,10 @@ function astar(a){
       drawer(current);
       break;
     }
-
     removeFromArr(openSet,current)
     closedSet.push(current)
+
+
     var neighbors = current.nb;
     for (var i = 0; i < neighbors.length; i++) {
       var neighbor = neighbors[i];
@@ -90,24 +89,25 @@ function astar(a){
             neighbor.g = tempG;
             newPath = true;
           }
-          } else {
-            neighbor.g = tempG;
-            newPath = true;
-            openSet.push(neighbor);
-          }
+        } else {
+          neighbor.g = tempG;
+          newPath = true;
+          openSet.push(neighbor);
+        }
 
-          if (newPath) {
-            neighbor.h = heuristic(neighbor, endNode);
-            neighbor.f = neighbor.g + neighbor.h;
-            neighbor.previous = current;
-          }
+        if (newPath) {
+          neighbor.h = heuristic(neighbor, endNode);
+          neighbor.f = neighbor.g + neighbor.h;
+          neighbor.previous = current;
+        }
       }
-
     }
   }
 
   if(!found){
-    console.log("No Soloutions")
+    ctx.textAlign="center";
+    ctx.font="60px Arial";
+    ctx.fillText("No Soloutions",c.width/2,c.height/2);
   }
 
   openSet = [];
